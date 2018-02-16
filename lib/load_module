@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+export _config="../etc/"
+local _arg_config=""
+
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: load_module()
 #
@@ -23,7 +26,21 @@ function load_module() {
 
     config)
 
-      echo "config"
+      printf "%s:" "config file" && read -ra _arg_config
+
+      if [[ -e "${_config}/${_arg_config}" ]] ; then
+
+        source "${_config}/${_arg_config}"
+
+      else
+
+        printf "%s" "error of argument value"
+
+        _logger "info" \
+          "${_FUNCTION_ID}()" \
+          "error of argument value"
+
+      fi
       ;;
 
     *)
