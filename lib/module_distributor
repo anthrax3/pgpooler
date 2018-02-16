@@ -1,0 +1,53 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: module_distributor()
+#
+# Description:
+#   Modules distributor.
+#
+# Usage:
+#   module_distributor param
+#
+# Examples:
+#   module_distributor "${input_array[@]}"
+#
+
+function module_distributor() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="module_distributor"
+  local _STATE=0
+
+  if [[ ${input_array[1]} ]] ; then
+
+    case ${input_array[1]} in
+
+      load)
+
+        if [[ ${input_array[2]} ]] ; then
+
+          echo "load"
+          # show_session "${input_array[2]}"
+
+        else
+
+          printf "stdout: %s\n" "invalid session params or null"
+
+        fi
+        ;;
+
+      *)
+        printf "stdout: %s\n" "unknown command" ;;
+
+    esac
+
+  else
+
+    printf "stdout: %s\n" "unknown argument"
+
+  fi
+
+  return $_STATE
+
+}
