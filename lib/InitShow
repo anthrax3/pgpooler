@@ -19,6 +19,35 @@ function InitShow() {
   local _FUNCTION_ID="InitShow"
   local _STATE=0
 
+  if [[ ${input_array[1]} ]] ; then
+
+    case ${input_array[1]} in
+
+      session)
+
+        if [[ ${input_array[2]} ]] ; then
+
+          echo "show session"
+          # show_session "${input_array[2]}"
+
+        else
+
+          echo "show session"
+          # show_session
+
+        fi
+        ;;
+
+      *)
+        printf "stdout: %s\n" "unknown command" ;;
+
+    esac
+
+  else
+
+    printf "stdout: %s\n" "unknown argument"
+
+  fi
 
   return $_STATE
 
