@@ -36,11 +36,6 @@ function __main__() {
   # shellcheck disable=SC2034
   s_color="true"
 
-  # Declaration of total execution time.
-  time_tracking="false"
-  time_mode="0"
-  export _cmdtime_state="0"
-
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
   readonly commands=("basename" "dirname" "stat" "date" "grep" "egrep" "cut" \
@@ -188,6 +183,9 @@ function __main__() {
     done
 
   fi
+
+  # Initialize pgpooler cli.
+  InitCli
 
   # ````````````````````````````````````````````````````````````````````````````
 
