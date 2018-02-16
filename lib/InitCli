@@ -46,64 +46,12 @@ function InitCli() {
 
       show)
 
-        if [[ ${input_array[1]} ]] ; then
-
-          case ${input_array[1]} in
-
-            session)
-
-              if [[ ${input_array[2]} ]] ; then
-
-                show_session "${input_array[2]}"
-
-              else
-
-                show_session
-
-              fi
-              ;;
-
-            *)
-              printf "stdout: %s\n" "unknown command" ;;
-
-          esac
-
-        else
-
-          printf "stdout: %s\n" "unknown argument"
-
-        fi
+        InitShow "${input_array[@]}"
         cstate="0" ;;
 
       set)
 
-        if [[ ${input_array[1]} ]] ; then
-
-          case ${input_array[1]} in
-
-            session)
-
-              if [[ ${input_array[2]} ]] ; then
-
-                set_session "${input_array[2]}"
-
-              else
-
-                printf "stdout: %s\n" "invalid session params or null"
-
-              fi
-              ;;
-
-            *)
-              printf "stdout: %s\n" "unknown command" ;;
-
-          esac
-
-        else
-
-          printf "stdout: %s\n" "unknown argument"
-
-        fi
+        InitSet "${input_array[@]}"
         cstate="0" ;;
 
       clear|main)
