@@ -1,0 +1,143 @@
+# shellcheck shell=bash
+
+readonly __cli_prompt="pgpooler"
+# shellcheck disable=SC2034
+__cli_banner=""
+
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: InitCli()
+#
+# Description:
+#   Init pgpooler cli.
+#
+# Usage:
+#   InitCli
+#
+# Examples:
+#   InitCli
+#
+
+function InitCli() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="InitCli"
+  local _STATE=0
+
+  local input_array=()
+
+  while [[ "${input_array[0]}" != "exit" ]] ; do
+
+    cstate="1"
+
+    __cli_banner="main"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}(${__cli_banner})>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear|main)
+
+        _init_cli
+        cstate="0" ;;
+
+      back)
+
+        printf "stdout: %s\n" "you are in main level" ;;
+
+      pgpool)
+
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+
+        echo -en ""
+        cstate="0" ;;
+
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: %s\n" "unknown command"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
