@@ -114,10 +114,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
     |-- .travis.yml                # continuous integration with Travis CI
     |-- setup.sh                   # install pgpooler on the system
     |-- bin
-        |-- pgpooler      # main script (init)
+        |-- pgpooler               # main script (init)
     |-- doc                        # includes documentation, images and manuals
         |-- man8
-            |-- pgpooler.8# man page for pgpooler
+            |-- pgpooler.8         # man page for pgpooler
     |-- lib                        # libraries, external functions
     |-- log                        # contains logs, created after init
     |-- src                        # includes external project files
@@ -125,9 +125,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
         |-- import                 # appends the contents of the lib directory
         |-- __init__               # contains the __main__ function
         |-- settings               # contains pgpooler settings
-    |-- templates                  # contains examples and template files
-        |-- user-config.cfg        # example of user config file
-    |-- tmp                        # contains temporary files (mktemp)
 
 ## License
 
