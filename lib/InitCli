@@ -24,6 +24,8 @@ function InitCli() {
   local _FUNCTION_ID="InitCli"
   local _STATE=0
 
+  clear
+
   local input_array=()
 
   while [[ "${input_array[0]}" != "exit" ]] ; do
