@@ -1,0 +1,52 @@
+# shellcheck shell=bash
+
+local _arg_config=""
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: show_module()
+#
+# Description:
+#   Show module.
+#
+# Usage:
+#   show_module param
+#
+# Examples:
+#   show_module "${input_array[@]}"
+#
+
+function show_module() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="show_module"
+  local _STATE=0
+
+  case ${input_array[1]} in
+
+    config)
+
+      printf "%s: " "config file" && read -ra _arg_config
+
+      if [[ -e "${_config}/${_arg_config}" ]] ; then
+
+        cat "${_config}/${_arg_config}"
+
+      else
+
+        printf "%s" "error of argument value"
+
+        _logger "info" \
+          "${_FUNCTION_ID}()" \
+          "error of argument value"
+
+      fi
+      ;;
+
+    *)
+      printf "stdout: %s\n" "unknown command" ;;
+
+  esac
+
+  return $_STATE
+
+}

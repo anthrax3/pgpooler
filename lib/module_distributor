@@ -23,6 +23,10 @@ function module_distributor() {
 
     load_module "${input_array[@]}"
 
+  elif [[ ${input_array[0]} == "show" ]] ; then
+
+    show_module "${input_array[@]}"
+
   fi
 
   return $_STATE
