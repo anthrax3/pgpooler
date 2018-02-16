@@ -1,4 +1,4 @@
-# git-template-full
+# pgpooler
 
 ## Releases
 
@@ -6,7 +6,7 @@
 | :--------------------------------------: | :--------------------------------------: |
 | [![](https://img.shields.io/badge/Branch-master-green.svg)]() | [![](https://img.shields.io/badge/Branch-testing-orange.svg)]() |
 | [![](https://img.shields.io/badge/Version-v1.0.0-lightgrey.svg)]() | [![](https://img.shields.io/badge/Version-v1.0.0-lightgrey.svg)]() |
-| [![Build Status](https://travis-ci.org/profile/git-template-full.svg?branch=master)](https://travis-ci.org/profile/git-template-full) | [![Build Status](https://travis-ci.org/profile/git-template-full.svg?branch=testing)](https://travis-ci.org/profile/git-template-full) |
+| [![Build Status](https://travis-ci.org/trimstray/pgpooler.svg?branch=master)](https://travis-ci.org/trimstray/pgpooler) | [![Build Status](https://travis-ci.org/trimstray/pgpooler.svg?branch=testing)](https://travis-ci.org/trimstray/pgpooler) |
 
 ## Description
 
@@ -18,17 +18,13 @@ Provides the following options:
 
 ``````
   Usage:
-    git-template-full <option|long-option>
+    pgpooler <option|long-option>
 
   Examples:
-    git-template-full --help
+    pgpooler --help
 
   Options:
         --help                      show this message
-        --debug                     displays information on the screen (debug mode)
-        --verbose                   displays 'info' messages on the screen (verbose mode)
-        --time                      displays execution time, occurs only with --verbose
-    -c, --config <file>             attach an external config file to the script
 ``````
 
 ## Configuration file
@@ -45,7 +41,7 @@ ipaddr=("127.0.0.1")
 
 ## Requirements
 
-**<u>git-template-full</u>** uses external utilities to be installed before running:
+**<u>pgpooler</u>** uses external utilities to be installed before running:
 
 - link-to-external-tool
 
@@ -63,7 +59,7 @@ For remove:
 ./setup.sh uninstall
 ``````
 
-> * symlink to `bin/git-template-full` is placed in `/usr/local/bin`
+> * symlink to `bin/pgpooler` is placed in `/usr/local/bin`
 > * man page is placed in `/usr/local/man/man8`
 
 ## Use example
@@ -73,7 +69,7 @@ For remove:
 Then an example of starting the tool:
 
 ``````
-git-template-full -c src/configs/template.cfg --time --verbose
+pgpooler -c src/configs/template.cfg --time --verbose
 ``````
 
 In the first place we define the configuration (which should be prepared in advance):
@@ -116,19 +112,19 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
     |-- CONTRIBUTING.md            # principles of project support
     |-- .gitignore                 # ignore untracked files
     |-- .travis.yml                # continuous integration with Travis CI
-    |-- setup.sh                   # install git-template-full on the system
+    |-- setup.sh                   # install pgpooler on the system
     |-- bin
-        |-- git-template-full      # main script (init)
+        |-- pgpooler      # main script (init)
     |-- doc                        # includes documentation, images and manuals
         |-- man8
-            |-- git-template-full.8# man page for git-template-full
+            |-- pgpooler.8# man page for pgpooler
     |-- lib                        # libraries, external functions
     |-- log                        # contains logs, created after init
     |-- src                        # includes external project files
         |-- helpers                # contains core functions
         |-- import                 # appends the contents of the lib directory
         |-- __init__               # contains the __main__ function
-        |-- settings               # contains git-template-full settings
+        |-- settings               # contains pgpooler settings
     |-- templates                  # contains examples and template files
         |-- user-config.cfg        # example of user config file
     |-- tmp                        # contains temporary files (mktemp)

@@ -81,9 +81,6 @@ function __main__() {
 
   fi
 
-  if [[ "$time_tracking" == "true" ]] ; then
-    _begtime=$(date +%s) ; fi
-
   # shellcheck disable=SC2154
   _logger "init" \
     "init '${_init_name}' in '${_init_directory}'" && \
@@ -96,8 +93,8 @@ function __main__() {
 
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
-  local _short_opt="c:"
-  local _long_opt="help,debug,verbose,time,config:"
+  local _short_opt=""
+  local _long_opt="help"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
@@ -127,32 +124,6 @@ function __main__() {
 
         shift ; _exit_ "0" ;;
 
-      --debug)
-
-        export stdout_mode="debug"
-
-        shift ;;
-
-      --verbose)
-
-        export printf_mode="verbose"
-
-        shift ;;
-
-      --time)
-
-        export time_mode="1"
-
-        shift ;;
-
-      -c|--config)
-
-        export load_state="1"
-
-        export config="${2}"
-
-        shift 2 ;;
-
       *)
 
         if [[ "$2" == "-" ]] || [[ ! -z "$2" ]] ; then
@@ -168,16 +139,6 @@ function __main__() {
     esac
 
   done
-
-  # If you run the script in debug mode, the information
-  # will be displayed on the screen from this point.
-  if [[ "$stdout_mode" == "debug" ]] ; then
-
-    _logger "info" \
-      "${_FUNCTION_ID}()" \
-      "starting debug mode"
-
-  fi
 
   # Running tasks before start user functions.
   _before_init
@@ -228,47 +189,7 @@ function __main__() {
 
   fi
 
-  # Only if you used --time, --verbose and --debug script parameters
-  # - checking the relationship between call parameters.
-  if [[ "$time_mode" -eq 1 ]] ; then
-
-    if [[ "$printf_mode" != "verbose" ]] ; then
-
-      _sprintf "stop" "missing argument: '--time' is dependent on '--verbose'"
-
-      _logger "stop" \
-        "${_FUNCTION_ID}()" \
-        "missing argument: '--time' occurs only with '--verbose'"
-
-    fi
-
-  elif [[ "$stdout_mode" == "debug" ]] ; then
-
-    if [[ "$printf_mode" == "verbose" ]] || [[ "$time_mode" -eq 1 ]] ; then
-
-      _sprintf "stop" "debug mode can not occur together with '--verbose' and '--time'"
-
-      _logger "stop" \
-        "${_FUNCTION_ID}()" \
-        "debug mode can not occur together with '--verbose' and '--time'"
-
-    fi
-
-  fi
-
   # ````````````````````````````````````````````````````````````````````````````
-
-  if [[ "$time_tracking" == "true" ]] ; then
-
-    # Counting the execution time.
-    _endtime=$(date +%s)
-    _totaltime=$((_endtime - _begtime))
-
-    # Print time header.
-    printf '\e[m\e[1;39mTOTAL TIME: %dh:%dm:%ds\e[m\n' \
-            $((_totaltime/3600)) $((_totaltime%3600/60)) $((_totaltime%60))
-
-  fi
 
   return "$_STATE"
 

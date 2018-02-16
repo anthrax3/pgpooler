@@ -4,8 +4,8 @@
 #
 # Header:
 #
-#         fname : "git-template-full"
-#         cdate : "00.00.0000"
+#         fname : "pgpooler"
+#         cdate : "16.02.2018"
 #        author : "Michał Żurawski <contact@nslab.at>"
 #      tab_size : "2"
 #     soft_tabs : "yes"
@@ -16,7 +16,7 @@
 #
 # License:
 #
-#   git-template-full, Copyright (C) 2018  Michał Żurawski
+#   pgpooler, Copyright (C) 2018  Michał Żurawski
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
