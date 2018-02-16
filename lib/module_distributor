@@ -19,32 +19,9 @@ function module_distributor() {
   local _FUNCTION_ID="module_distributor"
   local _STATE=0
 
-  if [[ ${input_array[0]} ]] ; then
+  if [[ ${input_array[0]} == "load" ]] ; then
 
-    case ${input_array[0]} in
-
-      load)
-
-        if [[ ${input_array[1]} ]] ; then
-
-          echo "load"
-          # show_session "${input_array[1]}"
-
-        else
-
-          printf "stdout: %s\n" "invalid session params or null"
-
-        fi
-        ;;
-
-      *)
-        printf "stdout: %s\n" "unknown command" ;;
-
-    esac
-
-  else
-
-    printf "stdout: %s\n" "unknown argument"
+    load_module "${input_array[@]}"
 
   fi
 

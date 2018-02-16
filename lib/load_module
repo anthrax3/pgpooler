@@ -1,0 +1,36 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: load_module()
+#
+# Description:
+#   Load module.
+#
+# Usage:
+#   load_module param
+#
+# Examples:
+#   load_module "${input_array[@]}"
+#
+
+function load_module() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="load_module"
+  local _STATE=0
+
+  case ${input_array[1]} in
+
+    config)
+
+      echo "config"
+      ;;
+
+    *)
+      printf "stdout: %s\n" "unknown command" ;;
+
+  esac
+
+  return $_STATE
+
+}
