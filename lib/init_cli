@@ -1,0 +1,84 @@
+# shellcheck shell=bash
+
+readonly __cli_prompt="pgpooler"
+# shellcheck disable=SC2034
+__cli_banner=""
+
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: init_cli()
+#
+# Description:
+#   Init pgpooler cli.
+#
+# Usage:
+#   init_cli
+#
+# Examples:
+#   init_cli
+#
+
+function init_cli() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="init_cli"
+  local _STATE=0
+
+  clear
+
+  local input_array=()
+
+  while [[ "${input_array[0]}" != "exit" ]] ; do
+
+    cstate="1"
+
+    __cli_banner="main"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}(${__cli_banner})>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      load)
+
+        module_distributor "${input_array[@]}"
+        cstate="0" ;;
+
+      clear|main)
+
+        init_cli
+        cstate="0" ;;
+
+      back)
+
+        printf "stdout: %s\n" "you are in main level" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+
+        echo -en ""
+        cstate="0" ;;
+
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: %s\n" "unknown command"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
