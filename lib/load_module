@@ -1,6 +1,5 @@
 # shellcheck shell=bash
 
-export _config="../etc/"
 local _arg_config=""
 
 # ``````````````````````````````````````````````````````````````````````````````
@@ -26,7 +25,7 @@ function load_module() {
 
     config)
 
-      printf "%s:" "config file" && read -ra _arg_config
+      printf "%s: " "config file" && read -ra _arg_config
 
       if [[ -e "${_config}/${_arg_config}" ]] ; then
 

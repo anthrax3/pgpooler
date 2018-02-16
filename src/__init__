@@ -181,6 +181,8 @@ function __main__() {
 
   fi
 
+  export _config="${_rel}/etc"
+
   # Initialize pgpooler cli.
   init_cli
 
