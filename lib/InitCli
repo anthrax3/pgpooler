@@ -106,7 +106,7 @@ function InitCli() {
 
       clear|main)
 
-        _init_cli
+        InitCli
         cstate="0" ;;
 
       back)
