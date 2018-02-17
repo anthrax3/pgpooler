@@ -32,7 +32,7 @@ function show_config() {
 
     fi
 
-    if [[ "$_key_id" != "ipaddr" ]] ; then
+    if [[ "$_key_id" != "web" ]] || [[ "$_key_id" != "db" ]] ; then
 
       _i="" ; eval _i='$'"$_key_var"
 
@@ -53,11 +53,23 @@ function show_config() {
       # Print with key value.
       else
 
-        if [[ "$_key_id" == "ipaddr" ]] ; then
+        if [[ "$_key_id" != "web" ]] ; then
 
           printf "{\"%s\":\n" "$_key_description"
 
-          for i in "${_ipaddr[@]}" ; do
+          for i in "${_web_stack[@]}" ; do
+
+            printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
+
+          done
+
+          printf "}\n"
+
+        elif [[ "$_key_id" != "db" ]] ; then
+
+          printf "{\"%s\":\n" "$_key_description"
+
+          for i in "${_db_stack[@]}" ; do
 
             printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
 
@@ -84,11 +96,23 @@ function show_config() {
       # Print with key value.
       else
 
-        if [[ "$_key_id" == "ipaddr" ]] ; then
+        if [[ "$_key_id" != "web" ]] ; then
 
           printf "{\"%s\":\n" "$_key_description"
 
-          for i in "${_ipaddr[@]}" ; do
+          for i in "${_web_stack[@]}" ; do
+
+            printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
+
+          done
+
+          printf "}\n"
+
+        elif [[ "$_key_id" != "db" ]] ; then
+
+          printf "{\"%s\":\n" "$_key_description"
+
+          for i in "${_db_stack[@]}" ; do
 
             printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
 

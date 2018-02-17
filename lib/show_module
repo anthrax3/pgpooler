@@ -9,10 +9,10 @@ local _arg_config=""
 #   Show module.
 #
 # Usage:
-#   show_module param
+#   show_module
 #
 # Examples:
-#   show_module "${input_array[@]}"
+#   show_module
 #
 
 function show_module() {
@@ -25,25 +25,19 @@ function show_module() {
 
     config)
 
-      show_config
+      if [[ ${input_array[2]} ]] ; then
 
-      if [[ -e "${_config}/${_arg_config}" ]] ; then
-
-        cat "${_config}/${_arg_config}"
+        show_config "${input_array[2]}"
 
       else
 
-        printf "%s" "error of argument value"
-
-        _logger "info" \
-          "${_FUNCTION_ID}()" \
-          "error of argument value"
+        show_config
 
       fi
       ;;
 
     *)
-      printf "stdout: %s\n" "unknown command" ;;
+      printf "stdout: %s\n" "unknown argument" ;;
 
   esac
 

@@ -9,10 +9,10 @@ local _arg_config=""
 #   Load module.
 #
 # Usage:
-#   set_module param
+#   set_module
 #
 # Examples:
-#   set_module "${input_array[@]}"
+#   set_module
 #
 
 function set_module() {
@@ -25,25 +25,19 @@ function set_module() {
 
     config)
 
-      printf "%s: " "config file" && read -ra _arg_config
+      if [[ ${input_array[2]} ]] ; then
 
-      if [[ -e "${_config}/${_arg_config}" ]] ; then
-
-        source "${_config}/${_arg_config}"
+        set_config "${input_array[2]}"
 
       else
 
-        printf "%s" "error of argument value"
-
-        _logger "info" \
-          "${_FUNCTION_ID}()" \
-          "error of argument value"
+        set_config
 
       fi
       ;;
 
     *)
-      printf "stdout: %s\n" "unknown command" ;;
+      printf "stdout: %s\n" "unknown argument" ;;
 
   esac
 
