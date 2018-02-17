@@ -4,7 +4,7 @@
 # Function name: set_config()
 #
 # Description:
-#   Set session configuration.
+#   Set config configuration.
 #
 # Usage:
 #   set_config
