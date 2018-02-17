@@ -7,10 +7,10 @@
 #   Modules distributor.
 #
 # Usage:
-#   module_distributor param
+#   module_distributor
 #
 # Examples:
-#   module_distributor "${input_array[@]}"
+#   module_distributor
 #
 
 function module_distributor() {
@@ -21,11 +21,11 @@ function module_distributor() {
 
   if [[ ${input_array[0]} == "set" ]] ; then
 
-    set_module "${input_array[@]}"
+    set_module
 
   elif [[ ${input_array[0]} == "show" ]] ; then
 
-    show_module "${input_array[@]}"
+    show_module
 
   fi
 
