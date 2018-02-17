@@ -35,7 +35,7 @@ function init_cli() {
     __cli_banner="main"
 
     # shellcheck disable=SC2154
-    printf "\e[1;31m%s\e[m " "${__cli_prompt}(${__cli_banner})>" && read -ra input_array
+    printf "\e[1;39m%s\e[m(\e[1;31m%s\e[m)\e[1;32m>\e[m " "${__cli_prompt}" "${__cli_banner}" && read -ra input_array
 
     case ${input_array[0]} in
 
