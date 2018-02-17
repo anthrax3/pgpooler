@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 
 export _config_file=""
-export _username=""
-export _port_number=""
+export _username="postgres"
+export _port_number="9898"
 export _web_stack=()
 export _db_stack=()
 
