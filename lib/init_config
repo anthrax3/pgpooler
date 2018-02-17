@@ -1,0 +1,14 @@
+# shellcheck shell=bash
+
+export _config_name=""
+export _username=""
+export _port_number=""
+export _web_stack=()
+export _db_stack=()
+
+export _session_variables=(\
+                      "Configuration file:config:_config_name" \
+                      "Username:user:_username" \
+                      "Pgpool port number:port:_port_number" \
+                      "Web servers:web:_web_stack" \
+                      "Database servers:db:_db_stack")

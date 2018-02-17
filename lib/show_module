@@ -25,7 +25,7 @@ function show_module() {
 
     config)
 
-      printf "%s: " "config file" && read -ra _arg_config
+      show_config
 
       if [[ -e "${_config}/${_arg_config}" ]] ; then
 
