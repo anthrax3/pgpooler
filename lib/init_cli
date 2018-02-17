@@ -41,7 +41,7 @@ function init_cli() {
 
       help)
 
-        _help_
+        help_cli
         cstate="0" ;;
 
       set|show)

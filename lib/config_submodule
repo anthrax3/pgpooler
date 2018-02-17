@@ -135,3 +135,49 @@ function show_config() {
   return $_STATE
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: set_config()
+#
+# Description:
+#   Set config configuration.
+#
+# Usage:
+#   set_config
+#
+# Examples:
+#   set_config
+#
+
+function set_config() {
+
+  local _FUNCTION_ID="set_config"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  case ${input_array[2]} in
+
+    file)
+      _config_file="${input_array[3]}"
+      ;;
+    user)
+      _username="${input_array[3]}"
+      ;;
+    port)
+      _port_number="${input_array[3]}"
+      ;;
+    web)
+      _web_stack=("${input_array[@]:3}")
+      ;;
+    db)
+      _db_stack=("${input_array[@]:3}")
+      ;;
+    *)
+      printf "stdout: %s\n" "unknown key" ;;
+
+  esac
+
+  return $_STATE
+
+}
