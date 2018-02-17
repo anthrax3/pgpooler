@@ -32,10 +32,10 @@ function set_config() {
       _port_number="${input_array[3]}"
       ;;
     web)
-      _web_stack=("${input_array[@]:2}")
+      _web_stack=("${input_array[@]:3}")
       ;;
     db)
-      _db_stack=("${input_array[@]:2}")
+      _db_stack=("${input_array[@]:3}")
       ;;
     *)
       printf "stdout: %s\n" "unknown key" ;;
