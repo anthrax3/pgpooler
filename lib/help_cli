@@ -1,0 +1,37 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: help_cli()
+#
+# Description:
+#   Show help in cli.
+#
+# Usage:
+#   help_cli
+#
+# Examples:
+#   help_cli
+#
+
+function help_cli() {
+
+  local _FUNCTION_ID="help_cli"
+  local _STATE=0
+
+  printf "%s" "
+  Modules:
+        show                        show module
+        set                         set module
+        attach                      attach db to web
+        detach                      detach db from web
+        flush                       flush module
+        save                        save module
+
+  show|set:
+        config                      configuration file
+
+"
+
+  return $_STATE
+
+}
