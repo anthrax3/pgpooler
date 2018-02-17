@@ -44,7 +44,7 @@ function init_cli() {
         _help_
         cstate="0" ;;
 
-      load|show)
+      set|show)
 
         module_distributor "${input_array[@]}"
         cstate="0" ;;

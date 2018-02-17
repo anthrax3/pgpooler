@@ -19,9 +19,9 @@ function module_distributor() {
   local _FUNCTION_ID="module_distributor"
   local _STATE=0
 
-  if [[ ${input_array[0]} == "load" ]] ; then
+  if [[ ${input_array[0]} == "set" ]] ; then
 
-    load_module "${input_array[@]}"
+    set_module "${input_array[@]}"
 
   elif [[ ${input_array[0]} == "show" ]] ; then
 

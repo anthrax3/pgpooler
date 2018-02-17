@@ -3,22 +3,22 @@
 local _arg_config=""
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: load_module()
+# Function name: set_module()
 #
 # Description:
 #   Load module.
 #
 # Usage:
-#   load_module param
+#   set_module param
 #
 # Examples:
-#   load_module "${input_array[@]}"
+#   set_module "${input_array[@]}"
 #
 
-function load_module() {
+function set_module() {
 
   # shellcheck disable=SC2034
-  local _FUNCTION_ID="load_module"
+  local _FUNCTION_ID="set_module"
   local _STATE=0
 
   case ${input_array[1]} in
