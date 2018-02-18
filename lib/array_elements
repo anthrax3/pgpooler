@@ -21,7 +21,7 @@ function add_element() {
 
   if [[ "${input_array[4]}" ]] ; then
 
-    _stack+=("${input_array[4]}")
+    _stack=("${input_array[4]}")
 
   else
 
@@ -31,11 +31,11 @@ function add_element() {
 
   if [[ "${input_array[2]}" == "web" ]] ; then
 
-    _web_stack=("${_stack[@]}")
+    _web_stack+=("${_stack[@]}")
 
   elif [[ "${input_array[2]}" == "db" ]] ; then
 
-    _db_stack=("${_stack[@]}")
+    _db_stack+=("${_stack[@]}")
 
   fi
 
