@@ -1,14 +1,14 @@
 # shellcheck shell=bash
 
-export _config_file=""
-export _username="postgres"
-export _port_number="9898"
-export _web_stack=()
-export _db_stack=()
+_config_file=""
+_username="postgres"
+_port_number="9898"
+_web_stack=()
+_db_stack=()
 
-export _session_variables=(\
-                      "Configuration file:file:_config_file" \
-                      "Username:user:_username" \
-                      "Pgpool port number:port:_port_number" \
-                      "Web servers:web:_web_stack" \
-                      "Database servers:db:_db_stack")
+_session_variables=(\
+                    "Configuration file:file:_config_file" \
+                    "Username:user:_username" \
+                    "Pgpool port number:port:_port_number" \
+                    "Web servers:web:_web_stack" \
+                    "Database servers:db:_db_stack")
