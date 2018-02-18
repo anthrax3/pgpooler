@@ -30,7 +30,7 @@ function show_cluster() {
 
     for _dbs in "${_db_stack[@]}" ; do
 
-      printf "          %s\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
+      printf "            %s" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
 
       _counter=$((_counter + 1))
 
