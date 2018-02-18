@@ -24,7 +24,7 @@ function show_cluster() {
 
     local _counter=0
 
-    printf "\n host : %s\n" "$_wbs"
+    printf "\n    host : %s\n" "$_wbs"
 
     for _dbs in "${_db_stack[@]}" ; do
 
