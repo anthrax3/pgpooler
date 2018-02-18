@@ -36,6 +36,12 @@ function show_module() {
       fi
       ;;
 
+    cluster)
+
+      show_cluster
+
+      ;;
+
     *)
       printf "stdout: %s\n" "unknown argument" ;;
 

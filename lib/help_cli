@@ -27,8 +27,13 @@ function help_cli() {
         flush                       flush module
         save                        save module
 
-  show|set:
+  show:
         config                      configuration file
+        cluster                     cluster configuration
+
+  set:
+        config                      configuration file
+
 
 "
 
