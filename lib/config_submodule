@@ -178,7 +178,51 @@ function set_config() {
       _port_number="${input_array[3]}"
       ;;
     web)
-      _web_stack=("${input_array[@]:3}")
+
+      case ${input_array[3]} in
+
+        add)
+
+          if [[ ${input_array[4]} ]] ; then
+
+            _web_stack+=("${input_array[4]}")
+
+          else
+
+            printf "stdout: %s\n" "empty node!"
+
+          fi
+          ;;
+
+        del)
+
+          if [[ ${input_array[4]} ]] ; then
+
+            _web_stack_tmp=()
+            for value in "${_web_stack[@]}" ; do
+
+              if [[ "$value" != "${input_array[4]}" ]] ; then
+
+                _web_stack_tmp+=($value)
+
+              fi
+
+            done
+
+            _web_stack=("${_web_stack_tmp[@]}")
+            unset _web_stack_tmp
+
+          else
+
+            printf "stdout: %s\n" "empty node!"
+
+          fi
+          ;;
+
+        *)
+          printf "stdout: %s\n" "unknown key" ;;
+
+      esac
       ;;
     db)
       _db_stack=("${input_array[@]:3}")
