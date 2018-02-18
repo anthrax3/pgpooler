@@ -24,7 +24,7 @@ function show_cluster() {
 
     local _counter=0
 
-    printf "-----------------\n"
+    printf '%.0s-' {1..20} ; echo
 
     for _dbs in "${_db_stack[@]}" ; do
 
@@ -36,7 +36,7 @@ function show_cluster() {
 
     done
 
-    printf "-----------------\n"
+    printf '%.0s-' {1..20} ; echo
 
   done
 
