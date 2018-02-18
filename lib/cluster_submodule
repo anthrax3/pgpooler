@@ -24,13 +24,11 @@ function show_cluster() {
 
     local _counter=0
 
-    printf '%.0s-' {1..20} ; echo
-
-    printf "web : %s\n" "$_wbs"
+    printf "\n host : %s\n" "$_wbs"
 
     for _dbs in "${_db_stack[@]}" ; do
 
-      printf " db : %s %s %s %s %s\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
+      printf " backend : %s %s %s %s %s\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
 
       _counter=$((_counter + 1))
 
@@ -38,7 +36,7 @@ function show_cluster() {
 
   done
 
-  printf '%.0s-' {1..20} ; echo
+  echo
 
   return $_STATE
 
