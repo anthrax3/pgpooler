@@ -160,6 +160,16 @@ function set_config() {
 
     file)
       _config_file="${input_array[3]}"
+
+      if [[ -e "${_config}/${_config_file}" ]] ; then
+
+        source "${_config}/${_config_file}"
+
+      else
+
+        printf "%s\n" "file not found"
+
+      fi
       ;;
     user)
       _username="${input_array[3]}"
