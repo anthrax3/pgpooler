@@ -20,7 +20,17 @@ function show_cluster() {
 
   local _session_arg="$1"
 
-  for _wbs in "${_web_stack[@]}" ; do
+  if [[ -z "$_session_arg" ]] ; then
+
+    _web_current_stack=("${_web_stack[@]}")
+
+  else
+
+    _web_current_stack=("${_session_arg}")
+
+  fi
+
+  for _wbs in "${_web_current_stack[@]}" ; do
 
     local _counter=0
 

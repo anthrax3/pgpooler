@@ -38,8 +38,15 @@ function show_module() {
 
     cluster)
 
-      show_cluster
+      if [[ ${input_array[2]} ]] ; then
 
+        show_cluster "${input_array[2]}"
+
+      else
+
+        show_cluster
+
+      fi
       ;;
 
     *)
