@@ -20,12 +20,12 @@ function show_cluster() {
 
   local _session_arg="$1"
 
-  for i in "${_web_stack[@]}" ; do
+  for _wbs in "${_web_stack[@]}" ; do
 
-    for j in "${_db_stack[@]}" ; do
+    for _dbs in "${_db_stack[@]}" ; do
 
-      printf "DB: %s\n" "$j"
-      pcp_node_info -h $i -p $_port_number -U $_username -n 0 -w
+      printf "DB: %s\n" "$_dbs"
+      pcp_node_info -h $_wbs -p $_port_number -U $_username -n 0 -w
 
     done
 
