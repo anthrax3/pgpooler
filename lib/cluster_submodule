@@ -26,19 +26,19 @@ function show_cluster() {
 
     printf '%.0s-' {1..20} ; echo
 
+    printf "Web server : %s\n" "$_wbs"
+
     for _dbs in "${_db_stack[@]}" ; do
 
-      printf "Web server : %s\n" "$_wbs"
-
-      pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w
+      printf "          %s\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
 
       _counter=$((_counter + 1))
 
     done
 
-    printf '%.0s-' {1..20} ; echo
-
   done
+
+  printf '%.0s-' {1..20} ; echo
 
   return $_STATE
 
