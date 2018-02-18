@@ -1,0 +1,36 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: show_cluster()
+#
+# Description:
+#   Show cluster configuration.
+#
+# Usage:
+#   show_cluster
+#
+# Examples:
+#   show_cluster
+#
+
+function show_cluster() {
+
+  local _FUNCTION_ID="show_cluster"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  for i in "${_web_stack[@]}" ; do
+
+    for j in "${_db_stack[@]}" ; do
+
+      printf "DB: %s\n" "$j"
+      pcp_node_info -h $i -p $_port_number -U $_username -n 0 -w
+
+    done
+
+  done
+
+  return $_STATE
+
+}
