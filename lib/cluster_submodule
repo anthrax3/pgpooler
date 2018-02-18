@@ -24,15 +24,19 @@ function show_cluster() {
 
     local _counter=0
 
+    printf "-----------------\n"
+
     for _dbs in "${_db_stack[@]}" ; do
 
       printf "Web server : %s\n" "$_wbs"
 
-      pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w -v
+      pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w
 
       _counter=$((_counter + 1))
 
     done
+
+    printf "-----------------\n"
 
   done
 
