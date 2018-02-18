@@ -20,9 +20,9 @@ function show_cluster() {
 
   local _session_arg="$1"
 
-  local _counter=0
-
   for _wbs in "${_web_stack[@]}" ; do
+
+    local _counter=0
 
     for _dbs in "${_db_stack[@]}" ; do
 
