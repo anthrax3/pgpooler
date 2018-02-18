@@ -182,13 +182,13 @@ function set_config() {
       case ${input_array[3]} in
 
         add)
-
           add_element
           ;;
 
         del)
-
           del_element
+          ;;
+
         *)
           printf "stdout: %s\n" "unknown key" ;;
 
