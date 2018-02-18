@@ -1,0 +1,109 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: add_element()
+#
+# Description:
+#   Add element to array.
+#
+# Usage:
+#   add_element
+#
+# Examples:
+#   add_element
+#
+
+function add_element() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="add_element"
+  local _STATE=0
+
+  if [[ "${input_array[4]}" ]] ; then
+
+    _stack+=("${input_array[4]}")
+
+  else
+
+    printf "stdout: %s\n" "empty node!"
+
+  fi
+
+  if [[ "${input_array[2]}" == "web" ]] ; then
+
+    _web_stack=("_stack")
+
+  elif [[ "${input_array[2]}" == "db" ]] ; then
+
+    _db_stack=("_stack")
+
+  fi
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: del_element()
+#
+# Description:
+#   Deleted element to array.
+#
+# Usage:
+#   del_element
+#
+# Examples:
+#   del_element
+#
+
+function del_element() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="del_element"
+  local _STATE=0
+
+  if [[ "${input_array[2]}" == "web" ]] ; then
+
+    _stack=("_web_stack")
+
+  elif [[ "${input_array[2]}" == "db" ]] ; then
+
+    _stack=("_db_stack")
+
+  fi
+
+  if [[ "${input_array[4]}" ]] ; then
+
+    _stack_tmp=()
+    for value in "${_stack[@]}" ; do
+
+      if [[ "$value" != "${input_array[4]}" ]] ; then
+
+        _stack_tmp+=($value)
+
+      fi
+
+    done
+
+    _stack=("${_stack_tmp[@]}")
+    unset _stack_tmp
+
+  else
+
+    printf "stdout: %s\n" "empty node!"
+
+  fi
+
+  if [[ "${input_array[2]}" == "web" ]] ; then
+
+    _web_stack=("_stack")
+
+  elif [[ "${input_array[2]}" == "db" ]] ; then
+
+    _db_stack=("_stack")
+
+  fi
+
+  return $_STATE
+
+}
