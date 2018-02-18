@@ -110,7 +110,7 @@ function show_config() {
 
         elif [[ "$_key_id" == "db" ]] ; then
 
-          printf "{\n  \"%s\",\n" "$_key_description"t
+          printf "{\n  \"%s\",\n" "$_key_description"
 
           for i in "${_db_stack[@]}" ; do
 
