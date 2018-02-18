@@ -20,10 +20,6 @@ function show_cluster() {
 
   local _session_arg="$1"
 
-  _bcknd_nodes=$(pcp_node_count -h $_wbs -p $_port_number -U $_username -w)
-
-  printf "Database backends: %s\n" "$_bcknd_nodes"
-
   for _wbs in "${_web_stack[@]}" ; do
 
     for _dbs in "${_db_stack[@]}" ; do
