@@ -184,11 +184,9 @@ function set_config() {
         add)
           add_element
           ;;
-
         del)
           del_element
           ;;
-
         *)
           printf "stdout: %s\n" "unknown key" ;;
 
