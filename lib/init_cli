@@ -33,7 +33,7 @@ function motd_cli() {
   printf "%s" "
   pgpooler v1.0.0
 
-  Author: trimstray (contact@nslab.at)
+  Project: https://github.com/trimstray/pgpooler
 
   This program comes with ABSOLUTELY NO WARRANTY.
   This is free software, and you are welcome to redistribute it
