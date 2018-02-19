@@ -1,0 +1,32 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: check_conn()
+#
+# Description:
+#   Check connection to remote host.
+#
+# Usage:
+#   check_conn host port
+#
+# Examples:
+#   check_conn 172.20.20.50 22
+#
+
+function check_conn() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="check_conn"
+  local _STATE=0
+
+  local _host="$1"
+  local _port="$2"
+
+  # shellcheck disable=SC2154
+  timeout 1 bash -c "</dev/tcp/${_host}/${_port}" >>"$_log_stdout" 2>&1
+
+  _STATE="$?"
+
+  return $_STATE
+
+}
