@@ -42,7 +42,7 @@ function __main__() {
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
   readonly commands=("basename" "dirname" "stat" "date" "grep" "egrep" "cut" \
-                     "sed" "gzip" "tar" "pgpool" "pcp_info_node" "pcp_attach_node" \
+                     "sed" "gzip" "tar" "pgpool" "pcp_node_info" "pcp_attach_node" \
                      "pcp_detach_node")
 
   # If you intend to specify the full path to the command we do it like:
