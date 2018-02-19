@@ -95,7 +95,7 @@ function show_databases() {
 
     fi
 
-    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m \e[${_trgb}m%s\e[m\n" "$_id" "$_db_name" "$_db_state"
+    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m (\e[${_trgb}m%s\e[m)\n" "$_id" "$_db_name" "$_db_state"
 
   done
 
