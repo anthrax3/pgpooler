@@ -568,7 +568,7 @@ function _help_() {
 
   Options:
         --help                      show this message
-
+    -c, --config <file>             attach an external config file to the script
 
   This program comes with ABSOLUTELY NO WARRANTY.
   This is free software, and you are welcome to redistribute it
