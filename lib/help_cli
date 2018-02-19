@@ -19,33 +19,30 @@ function help_cli() {
   local _STATE=0
 
   printf "%s" "
-  Modules:
-        show                        show module
-        set                         set module
+  CLI Modules:
+    show <submodule> <key>            show submodule key info
+    set <submodule> <key> <param>     set submodule key value
 
-  show:
-        config                      configuration file
-            file
-            user
-            port
-            web
-            db
-        cluster
-            status                  cluster configuration
-            databases               show database configuration
+  Submodules option:
+    show
+      config <file|user|port|web|db>
+      cluster <status|databases>
 
-  set:
-        config                      configuration file
-            file <value>
-            user <value>
-            port <value>
-            web add <value>
-            web del <value>
-            db add <value>
-            db del <value>
-        cluster
-            attach <host> <db>
-            detach <host> <db>
+    set
+      config <file|user|port|web[add,del]|db[add,del]>
+      cluster <attach[host][db]|detach[host][db]>
+
+    Examples:
+      show config                     displays the entire configuration
+      show config user                show username key
+      show cluster status             show cluster status
+      set config user admin           set username key to 'admin'
+      set web add web1-node           added web1-node host to web key
+      set db del db1-node             deleted db1-node host from db key
+      set cluster attach web1-node 0  attach web1-node to the db
+                                      marked with 0 id
+      set cluster detach web1-node 1  detach web1-node from the db
+                                      marked with 1 id
 
 "
 
