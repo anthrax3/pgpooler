@@ -48,14 +48,14 @@ function show_config() {
       # Print without key value.
       if [[ -z "$_i" ]] ; then
 
-        printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
+        printf "{\n  Description: %s\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
 
       # Print with key value.
       else
 
         if [[ "$_key_id" == "web" ]] ; then
 
-          printf "{\n  \"%s\",\n" "$_key_description"
+          printf "{\n  Description: %s\n" "$_key_description"
 
           for i in "${_web_stack[@]}" ; do
 
@@ -67,7 +67,7 @@ function show_config() {
 
         elif [[ "$_key_id" == "db" ]] ; then
 
-          printf "{\n  \"%s\",\n" "$_key_description"
+          printf "{\n  Description: %s\n" "$_key_description"
 
           for i in "${_db_stack[@]}" ; do
 
@@ -79,7 +79,7 @@ function show_config() {
 
         else
 
-          printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
+          printf "{\n  Description: %s\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
 
         fi
 
@@ -91,14 +91,14 @@ function show_config() {
       # Print without key value.
       if [[ -z "$_i" ]] ; then
 
-        printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
+        printf "{\n  Description: %s\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
 
       # Print with key value.
       else
 
         if [[ "$_key_id" == "web" ]] ; then
 
-          printf "{\n  \"%s\",\n" "$_key_description"
+          printf "{\n  Description: %s\n" "$_key_description"
 
           for i in "${_web_stack[@]}" ; do
 
@@ -110,7 +110,7 @@ function show_config() {
 
         elif [[ "$_key_id" == "db" ]] ; then
 
-          printf "{\n  \"%s\",\n" "$_key_description"
+          printf "{\n  Description: %s\n" "$_key_description"
 
           for i in "${_db_stack[@]}" ; do
 
@@ -122,7 +122,7 @@ function show_config() {
 
         else
 
-          printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
+          printf "{\n  Description: %s\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
 
         fi
 
