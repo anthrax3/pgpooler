@@ -89,7 +89,7 @@ function __main__() {
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
   local _short_opt=""
-  local _long_opt="help"
+  local _long_opt="help,config:"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
@@ -116,6 +116,14 @@ function __main__() {
 
         shift ; _exit_ "0" ;;
 
+      -c|--config)
+
+        export load_state="1"
+
+        export config="${2}"
+
+        shift 2 ;;
+
       *)
 
         if [[ "$2" == "-" ]] || [[ ! -z "$2" ]] ; then
@@ -141,7 +149,7 @@ function __main__() {
   # and all the other code blocks.
 
   # In this section we add external file (for -c|--config script param).
-  if [[ "$load_state" -eq 1 ]] ; then _load "head" "$config" ; fi
+  if [[ "$load_state" -eq 1 ]] ; then _load "head" "${_config}/${config}" ; fi
 
   # shellcheck disable=SC2034
   # Generate random value.
@@ -180,8 +188,6 @@ function __main__() {
     done
 
   fi
-
-  export _config="${_rel}/etc"
 
   # Initialize configuration
   init_config
