@@ -22,10 +22,6 @@ function help_cli() {
   Modules:
         show                        show module
         set                         set module
-        attach                      attach db to web
-        detach                      detach db from web
-        flush                       flush module
-        save                        save module
 
   show:
         config                      configuration file
@@ -47,14 +43,9 @@ function help_cli() {
             web del <value>
             db add <value>
             db del <value>
-
-  attach:
-        <value>
-        <host> <value>
-
-  detach:
-        <value>
-        <host> <value>
+        cluster
+            attach <host> <db>
+            detach <host> <db>
 
 "
 
