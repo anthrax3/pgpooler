@@ -40,6 +40,10 @@ function motd_cli() {
   under certain conditions; for more details please see
   <http://www.gnu.org/licenses/>.
 
+  Hint:
+
+    Try 'help' to show all cli commands and start!
+
 "
 
   return $_STATE
