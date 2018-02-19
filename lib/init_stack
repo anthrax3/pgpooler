@@ -27,7 +27,7 @@ function init_db_stack() {
     for _db in "${_db_stack[@]}" ; do
 
       _db_env+=("$_counter":"$_db")
-      _counter=(($_counter + 1))
+      _counter=$((_counter + 1))
 
     done
 
