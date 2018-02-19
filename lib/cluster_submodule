@@ -38,7 +38,7 @@ function show_cluster() {
 
     for _dbs in "${_db_stack[@]}" ; do
 
-      printf " \e[0;30mbackend\e[m : %s %s %s \e[0;34m%s\e[m \e[0;32m%s\e[m\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
+      printf " \e[0;30mbackend\e[m : %s %s \e[0;35m%s\e[m \e[0;34m%s\e[m \e[0;32m%s\e[m\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
 
       _counter=$((_counter + 1))
 
