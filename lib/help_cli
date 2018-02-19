@@ -29,11 +29,22 @@ function help_cli() {
 
   show:
         config                      configuration file
+            file
+            user
+            port
+            web
+            db
         cluster                     cluster configuration
 
   set:
         config                      configuration file
-
+            file <value>
+            user <value>
+            port <value>
+            web add <value>
+            web del <value>
+            db add <value>
+            db del <value>
 
 "
 
