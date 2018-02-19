@@ -85,12 +85,12 @@ function show_databases() {
 
     if [[ "$?" -eq 0 ]] ; then
 
-      _db_state="UP"
+      _db_state="up"
       _trgb="0;32"
 
     else
 
-      _db_state="DOWN"
+      _db_state="down"
       _trgb="0;31"
 
     fi
