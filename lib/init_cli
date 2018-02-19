@@ -4,6 +4,10 @@ readonly __cli_prompt="pgpooler"
 # shellcheck disable=SC2034
 __cli_banner=""
 
+readonly _und=$(tput smul)
+readonly _nound=$(tput rmul)
+readonly _bold=$(tput bold)
+readonly _normal=$(tput sgr0)
 
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: init_cli()
@@ -35,7 +39,8 @@ function init_cli() {
     __cli_banner="main"
 
     # shellcheck disable=SC2154
-    printf "\e[1;39m%s\e[m(\e[1;31m%s\e[m)\e[1;32m>\e[m " "${__cli_prompt}" "${__cli_banner}" && read -ra input_array
+    # printf "\e[1;30m%s\e[m(\e[1;31m%s\e[m)\e[1;32m>\e[m " "${__cli_prompt}" "${__cli_banner}" && read -ra input_array
+    printf "${_und}\e[1;30m%s\e[m${_normal}\e[1;32m >\e[m " "${__cli_prompt}" && read -ra input_array
 
     case ${input_array[0]} in
 
