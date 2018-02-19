@@ -48,7 +48,7 @@ function show_config() {
       # Print without key value.
       if [[ -z "$_i" ]] ; then
 
-        printf "{\n  \"%s\",\n  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
+        printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
 
       # Print with key value.
       else
@@ -59,7 +59,7 @@ function show_config() {
 
           for i in "${_web_stack[@]}" ; do
 
-            printf "  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n" "$_key_id" "$i"
+            printf "  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n" "$_key_id" "$i"
 
           done
 
@@ -71,7 +71,7 @@ function show_config() {
 
           for i in "${_db_stack[@]}" ; do
 
-            printf "  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n" "$_key_id" "$i"
+            printf "  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n" "$_key_id" "$i"
 
           done
 
@@ -79,7 +79,7 @@ function show_config() {
 
         else
 
-          printf "{\n  \"%s\",\n  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
+          printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
 
         fi
 
@@ -91,7 +91,7 @@ function show_config() {
       # Print without key value.
       if [[ -z "$_i" ]] ; then
 
-        printf "{\n  \"%s\",\n  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
+        printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" ""
 
       # Print with key value.
       else
@@ -102,7 +102,7 @@ function show_config() {
 
           for i in "${_web_stack[@]}" ; do
 
-            printf "  { \"\e[0;30m%s\e[m\",\"\e[1;39m%s\e[m\" }\n" "$_key_id" "$i"
+            printf "  { \"\e[0;38m%s\e[m\",\"\e[0;36m%s\e[m\" }\n" "$_key_id" "$i"
 
           done
 
@@ -114,7 +114,7 @@ function show_config() {
 
           for i in "${_db_stack[@]}" ; do
 
-            printf "  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n" "$_key_id" "$i"
+            printf "  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n" "$_key_id" "$i"
 
           done
 
@@ -122,7 +122,7 @@ function show_config() {
 
         else
 
-          printf "{\n  \"%s\",\n  { \"\e[0;30m%s\e[m\":\"\e[1;39m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
+          printf "{\n  \"%s\",\n  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n}\n" "$_key_description" "$_key_id" "$_i"
 
         fi
 
