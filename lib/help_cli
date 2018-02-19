@@ -35,6 +35,7 @@ function help_cli() {
             web
             db
         cluster                     cluster configuration
+        databases                   show database configuration
 
   set:
         config                      configuration file
@@ -45,6 +46,14 @@ function help_cli() {
             web del <value>
             db add <value>
             db del <value>
+
+  attach:
+        <value>
+        <host> <value>
+
+  detach:
+        <value>
+        <host> <value>
 
 "
 
