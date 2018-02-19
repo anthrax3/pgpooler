@@ -155,6 +155,8 @@ function __main__() {
   if [[ "$load_state" -eq 1 ]] ; then
 
     _load "head" "${config}"
+    _config_file="${config}"
+
     init_db_stack
 
   fi
