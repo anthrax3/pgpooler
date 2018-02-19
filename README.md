@@ -172,7 +172,7 @@ pgpooler > show config web
 }
 ```
 
-Delete some web node from pgpool cluster config:
+Delete web node from pgpool cluster config:
 
 ```bash
 pgpooler > set config web del node-web3
