@@ -4,10 +4,47 @@ readonly __cli_prompt="pgpooler"
 # shellcheck disable=SC2034
 __cli_banner=""
 
+_motd_status=0
+
 readonly _und=$(tput smul)
 readonly _nound=$(tput rmul)
 readonly _bold=$(tput bold)
 readonly _normal=$(tput sgr0)
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: motd_cli()
+#
+# Description:
+#   Message of the day.
+#
+# Usage:
+#   motd_cli
+#
+# Examples:
+#   motd_cli
+#
+
+function motd_cli() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="motd_cli"
+  local _STATE=0
+
+  printf "%s" "
+  pgpooler v1.0.0
+
+  Author: trimstray (contact@nslab.at)
+
+  This program comes with ABSOLUTELY NO WARRANTY.
+  This is free software, and you are welcome to redistribute it
+  under certain conditions; for more details please see
+  <http://www.gnu.org/licenses/>.
+
+"
+
+  return $_STATE
+
+}
 
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: init_cli()
@@ -29,6 +66,13 @@ function init_cli() {
   local _STATE=0
 
   clear
+
+  if [[ "$_motd_status" -eq 0 ]] ; then
+
+    motd_cli
+    _motd_status=1
+
+  fi
 
   local input_array=()
 
