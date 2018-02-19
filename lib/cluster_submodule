@@ -81,7 +81,7 @@ function show_databases() {
     # shellcheck disable=SC2034
     _db_name=$(echo "$_db" | awk -v FS="(:|:)" '{print $2}')
 
-    printf " %s\t  \e[0;30mhost\e[m\n" "$_id" "$_db_name"
+    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m\n" "$_id" "$_db_name"
 
   done
 
