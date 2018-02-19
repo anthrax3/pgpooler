@@ -27,14 +27,6 @@ function module_distributor() {
 
     show_module
 
-  elif [[ ${input_array[0]} == "attach" ]] ; then
-
-    attach_node
-
-  elif [[ ${input_array[0]} == "detach" ]] ; then
-
-    detach_node
-
   fi
 
   return $_STATE
