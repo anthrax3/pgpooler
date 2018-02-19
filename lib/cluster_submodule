@@ -51,3 +51,42 @@ function show_cluster() {
   return $_STATE
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: show_databases()
+#
+# Description:
+#   Show databases status.
+#
+# Usage:
+#   show_databases
+#
+# Examples:
+#   show_databases
+#
+
+function show_databases() {
+
+  local _FUNCTION_ID="show_databases"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  printf '%.0s-' {1..20} ; echo
+
+  for _db in "${_db_stack[@]}" ; do
+
+    # shellcheck disable=SC2034
+    _id=$(echo "$i" | awk -v FS="(:|:)" '{print $1}')
+    # shellcheck disable=SC2034
+    _db_name=$(echo "$i" | awk -v FS="(:|:)" '{print $2}')
+
+    printf "%s\t %s\n" "$_id" "$_db_name"
+
+  done
+
+  printf '%.0s-' {1..20} ; echo
+
+  return $_STATE
+
+}
