@@ -25,6 +25,9 @@ function __main__() {
   # shellcheck disable=SC2154
   readonly _import_path="${_src}/import"
 
+  # Directory with configs.
+  readonly _config="${_rel}/etc"
+
   # External configuration file (-c|--config script param).
   config=""
   load_state="0"
@@ -149,7 +152,12 @@ function __main__() {
   # and all the other code blocks.
 
   # In this section we add external file (for -c|--config script param).
-  if [[ "$load_state" -eq 1 ]] ; then _load "head" "${_config}/${config}" ; fi
+  if [[ "$load_state" -eq 1 ]] ; then
+
+    _load "head" "${config}"
+    init_db_stack
+
+  fi
 
   # shellcheck disable=SC2034
   # Generate random value.
