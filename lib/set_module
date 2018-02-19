@@ -44,11 +44,11 @@ function set_module() {
 
           if [[ ${input_array[3]} ]] ; then
 
-            set_config "${input_array[3]}"
+            set_cluster "${input_array[3]}"
 
           else
 
-            set_config
+            set_cluster
 
           fi
           ;;
