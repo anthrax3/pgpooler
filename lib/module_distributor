@@ -19,6 +19,7 @@ function module_distributor() {
   local _FUNCTION_ID="module_distributor"
   local _STATE=0
 
+  # shellcheck disable=SC2154
   if [[ ${input_array[0]} == "set" ]] ; then
 
     set_module

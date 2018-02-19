@@ -36,8 +36,10 @@ function show_cluster() {
 
     printf "\n    \e[0;30mhost\e[m : \e[1;39m%s\e[m\n" "$_wbs"
 
+    # shellcheck disable=SC2034,SC2154
     for _dbs in "${_db_stack[@]}" ; do
 
+      # shellcheck disable=SC2183,SC2046,SC2086
       printf " \e[0;30mbackend\e[m : %s %s \e[0;35m%s\e[m \e[0;34m%s\e[m \e[0;32m%s\e[m\n" $(pcp_node_info -h $_wbs -p $_port_number -U $_username -n $_counter -w)
 
       _counter=$((_counter + 1))
@@ -74,6 +76,7 @@ function show_databases() {
 
   printf "ID\t DATABASE\n"
 
+  # shellcheck disable=SC2154
   for _db in "${_db_env[@]}" ; do
 
     # shellcheck disable=SC2034
@@ -82,8 +85,9 @@ function show_databases() {
     _db_name=$(echo "$_db" | awk -v FS="(:|:)" '{print $2}')
 
     check_conn "$_db_name" 5432
+    _sb_status="$?"
 
-    if [[ "$?" -eq 0 ]] ; then
+    if [[ "$_sb_status" -eq 0 ]] ; then
 
       _db_state="up"
       _trgb="0;32"
@@ -118,11 +122,13 @@ function show_databases() {
 
 function set_cluster() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="set_cluster"
   local _STATE=0
 
   local _session_arg="$1"
 
+  # shellcheck disable=SC2154
   case ${input_array[2]} in
 
     attach)

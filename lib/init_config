@@ -1,5 +1,6 @@
 # shellcheck shell=bash
 
+# shellcheck disable=SC2034
 _config_file=""
 _username="postgres"
 _port_number="9898"

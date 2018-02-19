@@ -84,6 +84,7 @@ function init_cli() {
 
     cstate="1"
 
+    # shellcheck disable=SC2034
     __cli_banner="main"
 
     # shellcheck disable=SC2154

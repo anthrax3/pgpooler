@@ -19,17 +19,18 @@ function attach_node() {
   local _FUNCTION_ID="attach_node"
   local _STATE=0
 
+  # shellcheck disable=SC2154
   if [[ "${input_array[3]}" ]] ; then
 
-    if [[ "${_web_stack[@]}" =~ "${input_array[3]}" ]] ; then
+    for i in "${_web_stack[@]}" ; do
 
-      pcp_attach_node -h $_wbs -p $_port_number -U $_username -n "${input_array[4]}" -w
+      if [[ "$i" == "${input_array[3]}" ]] ; then
 
-    else
+        pcp_attach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
-      printf "stdout: %s\n" "wrong node name!"
+      fi
 
-    fi
+    done
 
   else
 
@@ -60,17 +61,18 @@ function detach_node() {
   local _FUNCTION_ID="detach_node"
   local _STATE=0
 
+  # shellcheck disable=SC2154
   if [[ "${input_array[3]}" ]] ; then
 
-    if [[ "${_web_stack[@]}" =~ "${input_array[3]}" ]] ; then
+    for i in "${_web_stack[@]}" ; do
 
-      pcp_detach_node -h $_wbs -p $_port_number -U $_username -n "${input_array[4]}" -w
+      if [[ "$i" == "${input_array[3]}" ]] ; then
 
-    else
+        pcp_detach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
-      printf "stdout: %s\n" "wrong node name!"
+      fi
 
-    fi
+    done
 
   else
 

@@ -20,6 +20,7 @@ function show_config() {
 
   local _session_arg="$1"
 
+  # shellcheck disable=SC2154
   for _svar in "${_session_variables[@]}" ; do
 
     _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
@@ -57,6 +58,7 @@ function show_config() {
 
           printf "{\n  Description: %s\n" "$_key_description"
 
+          # shellcheck disable=SC2154
           for i in "${_web_stack[@]}" ; do
 
             printf "  { \"\e[0;38m%s\e[m\":\"\e[0;36m%s\e[m\" }\n" "$_key_id" "$i"
@@ -67,6 +69,7 @@ function show_config() {
 
         elif [[ "$_key_id" == "db" ]] ; then
 
+          # shellcheck disable=SC2154
           printf "{\n  Description: %s\n" "$_key_description"
 
           for i in "${_db_stack[@]}" ; do
@@ -151,11 +154,13 @@ function show_config() {
 
 function set_config() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="set_config"
   local _STATE=0
 
   local _session_arg="$1"
 
+  # shellcheck disable=SC2154
   case ${input_array[2]} in
 
     file)
@@ -163,6 +168,7 @@ function set_config() {
 
       if [[ -e "${_config}/${_config_file}" ]] ; then
 
+        # shellcheck disable=SC1090
         source "${_config}/${_config_file}"
         init_db_stack
 
@@ -173,9 +179,11 @@ function set_config() {
       fi
       ;;
     user)
+      # shellcheck disable=SC2034
       _username="${input_array[3]}"
       ;;
     port)
+      # shellcheck disable=SC2034
       _port_number="${input_array[3]}"
       ;;
     web|db)

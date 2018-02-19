@@ -19,6 +19,7 @@ function add_element() {
   local _FUNCTION_ID="add_element"
   local _STATE=0
 
+  # shellcheck disable=SC2154
   if [[ "${input_array[4]}" ]] ; then
 
     _stack=("${input_array[4]}")

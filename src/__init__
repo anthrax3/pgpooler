@@ -32,8 +32,10 @@ function __main__() {
   config=""
   load_state="0"
 
+  # shellcheck disable=SC2034
   # Declaration of output variables (--debug and --verbose params).
   stdout_mode=""
+  # shellcheck disable=SC2034
   printf_mode=""
   # Enable/disable output colors.
   # shellcheck disable=SC2034
@@ -155,7 +157,9 @@ function __main__() {
   # In this section we add external file (for -c|--config script param).
   if [[ "$load_state" -eq 1 ]] ; then
 
+    # shellcheck disable=SC2034
     _load "head" "${config}"
+    # shellcheck disable=SC2034
     _config_file="${config}"
 
     init_db_stack
