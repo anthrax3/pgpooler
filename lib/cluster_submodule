@@ -77,16 +77,17 @@ function show_databases() {
   for _db in "${_db_env[@]}" ; do
 
     check_conn "$_db" 5432
+    _db_status="$?"
 
-    if [[ "$?" -eq 0 ]] ; then
+    if [[ "$_db_status" -eq 0 ]] ; then
 
       _db_state="UP"
-      _trgb="0;33"
+      _trgb="0;32"
 
     else
 
       _db_state="DOWN"
-      _trgb="0;32"
+      _trgb="0;31"
 
     fi
 
