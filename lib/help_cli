@@ -34,8 +34,9 @@ function help_cli() {
             port
             web
             db
-        cluster                     cluster configuration
-        databases                   show database configuration
+        cluster
+            status                  cluster configuration
+            databases               show database configuration
 
   set:
         config                      configuration file
