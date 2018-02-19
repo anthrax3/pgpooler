@@ -1,0 +1,38 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: init_db_stack()
+#
+# Description:
+#   Initialize db stack.
+#
+# Usage:
+#   init_db_stack
+#
+# Examples:
+#   init_db_stack
+#
+
+function init_db_stack() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="init_db_stack"
+  local _STATE=0
+
+  export _db_env=()
+
+  if [[ ${#_db_stack[@]} -ne 0 ]] ; then
+
+    local _counter=0
+    for _db in "${_web_stack[@]}" ; do
+
+      _db_env+=("$_counter":"$_db")
+      _counter=(($_counter + 1))
+
+    done
+
+  fi
+
+  return $_STATE
+
+}
