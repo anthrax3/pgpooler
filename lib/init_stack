@@ -19,7 +19,7 @@ function init_db_stack() {
   local _FUNCTION_ID="init_db_stack"
   local _STATE=0
 
-  export _db_env=()
+  _db_env=()
 
   if [[ ${#_db_stack[@]} -ne 0 ]] ; then
 
