@@ -36,6 +36,29 @@ function set_module() {
       fi
       ;;
 
+    cluster)
+
+      case ${input_array[2]} in
+
+        attach|detach)
+
+          if [[ ${input_array[3]} ]] ; then
+
+            set_config "${input_array[3]}"
+
+          else
+
+            set_config
+
+          fi
+          ;;
+
+        *)
+          printf "stdout: %s\n" "unknown argument" ;;
+
+      esac
+      ;;
+
     *)
       printf "stdout: %s\n" "unknown argument" ;;
 
