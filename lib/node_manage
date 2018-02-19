@@ -1,0 +1,84 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: attach_node()
+#
+# Description:
+#   Attach node to cluster.
+#
+# Usage:
+#   attach_node
+#
+# Examples:
+#   attach_node
+#
+
+function attach_node() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="attach_node"
+  local _STATE=0
+
+  if [[ "${input_array[1]}" ]] ; then
+
+    if [[ "${_web_stack[@]}" =~ "${input_array[1]}" ]]; then
+
+      pcp_attach_node -h $_wbs -p $_port_number -U $_username -n "${input_array[2]}" -w)
+
+    else
+
+      printf "stdout: %s\n" "wrong node name!"
+
+    fi
+
+  else
+
+    printf "stdout: %s\n" "empty node!"
+
+  fi
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: detach_node()
+#
+# Description:
+#   Detach node to cluster.
+#
+# Usage:
+#   detach_node
+#
+# Examples:
+#   detach_node
+#
+
+function detach_node() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="detach_node"
+  local _STATE=0
+
+  if [[ "${input_array[1]}" ]] ; then
+
+    if [[ "${_web_stack[@]}" =~ "${input_array[1]}" ]]; then
+
+      #pcp_attach_node -h $_wbs -p $_port_number -U $_username -n "${input_array[2]}" -w)
+      true
+
+    else
+
+      printf "stdout: %s\n" "wrong node name!"
+
+    fi
+
+  else
+
+    printf "stdout: %s\n" "empty node!"
+
+  fi
+
+  return $_STATE
+
+}
