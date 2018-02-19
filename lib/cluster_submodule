@@ -76,12 +76,26 @@ function show_databases() {
 
   for _db in "${_db_env[@]}" ; do
 
+    check_conn "$_db" 5432
+
+    if [[ "$?" -eq 0 ]] ; then
+
+      _db_state="UP"
+      _trgb="0;33"
+
+    else
+
+      _db_state="DOWN"
+      _trgb="0;32"
+
+    fi
+
     # shellcheck disable=SC2034
     _id=$(echo "$_db" | awk -v FS="(:|:)" '{print $1}')
     # shellcheck disable=SC2034
     _db_name=$(echo "$_db" | awk -v FS="(:|:)" '{print $2}')
 
-    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m\n" "$_id" "$_db_name"
+    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m \e[${_trgb}m%s\e[m\n" "$_id" "$_db_name" "$_db_state"
 
   done
 
