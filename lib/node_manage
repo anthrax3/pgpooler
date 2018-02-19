@@ -21,9 +21,9 @@ function attach_node() {
 
   if [[ "${input_array[1]}" ]] ; then
 
-    if [[ "${_web_stack[@]}" =~ "${input_array[1]}" ]]; then
+    if [[ "${_web_stack[@]}" =~ "${input_array[1]}" ]] ; then
 
-      pcp_attach_node -h $_wbs -p $_port_number -U $_username -n "${input_array[2]}" -w)
+      pcp_attach_node -h $_wbs -p $_port_number -U $_username -n "${input_array[2]}" -w
 
     else
 
