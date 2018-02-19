@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-local _arg_config=""
+_arg_config=""
 
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: show_module()
