@@ -88,3 +88,42 @@ function show_databases() {
   return $_STATE
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: set_cluster()
+#
+# Description:
+#   Set cluster configuration.
+#
+# Usage:
+#   set_cluster
+#
+# Examples:
+#   set_cluster
+#
+
+function set_cluster() {
+
+  local _FUNCTION_ID="set_cluster"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  case ${input_array[2]} in
+
+    attach)
+      attach_node
+      ;;
+
+    detach)
+      detach_node
+      ;;
+
+    *)
+      printf "stdout: %s\n" "unknown key" ;;
+
+  esac
+
+  return $_STATE
+
+}
