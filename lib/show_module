@@ -49,6 +49,12 @@ function show_module() {
       fi
       ;;
 
+    databases)
+
+        show_databases
+
+      ;;
+
     *)
       printf "stdout: %s\n" "unknown argument" ;;
 
