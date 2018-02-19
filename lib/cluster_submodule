@@ -72,20 +72,18 @@ function show_databases() {
 
   local _session_arg="$1"
 
-  printf '%.0s-' {1..20} ; echo
+  printf "ID\t DATABASE\n"
 
   for _db in "${_db_stack[@]}" ; do
 
     # shellcheck disable=SC2034
-    _id=$(echo "$i" | awk -v FS="(:|:)" '{print $1}')
+    _id=$(echo "$_db" | awk -v FS="(:|:)" '{print $1}')
     # shellcheck disable=SC2034
-    _db_name=$(echo "$i" | awk -v FS="(:|:)" '{print $2}')
+    _db_name=$(echo "$_db" | awk -v FS="(:|:)" '{print $2}')
 
-    printf "%s\t %s\n" "$_id" "$_db_name"
+    printf " %s\t %s\n" "$_id" "$_db_name"
 
   done
-
-  printf '%.0s-' {1..20} ; echo
 
   return $_STATE
 
