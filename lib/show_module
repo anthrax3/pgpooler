@@ -38,22 +38,31 @@ function show_module() {
 
     cluster)
 
-      if [[ ${input_array[2]} ]] ; then
+      case ${input_array[2]} in
 
-        show_cluster "${input_array[2]}"
+        status)
 
-      else
+          if [[ ${input_array[3]} ]] ; then
 
-        show_cluster
+            show_cluster "${input_array[3]}"
 
-      fi
-      ;;
+          else
 
-    databases)
+            show_cluster
 
-        show_databases
+          fi
+          ;;
 
-      ;;
+        databases)
+
+          show_databases
+
+        ;;
+
+        *)
+          printf "stdout: %s\n" "unknown argument" ;;
+
+      esac
 
     *)
       printf "stdout: %s\n" "unknown argument" ;;
