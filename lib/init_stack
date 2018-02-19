@@ -33,6 +33,8 @@ function init_db_stack() {
 
   fi
 
+  echo "${_db_env[@]}"
+
   return $_STATE
 
 }

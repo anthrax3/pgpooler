@@ -74,7 +74,7 @@ function show_databases() {
 
   printf "ID\t DATABASE\n"
 
-  for _db in "${_db_stack[@]}" ; do
+  for _db in "${_db_env[@]}" ; do
 
     # shellcheck disable=SC2034
     _id=$(echo "$_db" | awk -v FS="(:|:)" '{print $1}')
