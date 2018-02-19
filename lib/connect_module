@@ -1,0 +1,43 @@
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: connect_module()
+#
+# Description:
+#   Connect to remote node.
+#
+# Usage:
+#   connect_module
+#
+# Examples:
+#   connect_module
+#
+
+function connect_module() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="connect_module"
+  local _STATE=0
+
+  # shellcheck disable=SC2154
+  if [[ "${input_array[3]}" ]] ; then
+
+    for i in "${_web_stack[@]}" ; do
+
+      if [[ "$i" == "${input_array[3]}" ]] ; then
+
+        pcp_attach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
+
+      fi
+
+    done
+
+  else
+
+    printf "stdout: %s\n" "empty node!"
+
+  fi
+
+  return $_STATE
+
+}
