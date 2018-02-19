@@ -24,7 +24,7 @@ function init_db_stack() {
   if [[ ${#_db_stack[@]} -ne 0 ]] ; then
 
     local _counter=0
-    for _db in "${_web_stack[@]}" ; do
+    for _db in "${_db_stack[@]}" ; do
 
       _db_env+=("$_counter":"$_db")
       _counter=(($_counter + 1))
