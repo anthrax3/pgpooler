@@ -64,7 +64,8 @@ function show_cluster() {
       fi
 
       # shellcheck disable=SC2183,SC2046,SC2086
-      printf " \e[0;30mbackend\e[m : %s (status: \e[${_trgb}m%s\e[m), code: \e[0;36m%s\e[m, info: \e[0;38m%s\e[m\n" "${_node_info[0]}" "${_node_info[2]}" "${_node_info[4]}" "${_status_info}"
+      printf " \e[0;30mbackend\e[m : %s (\e[${_trgb}%s\e[m)\n" "${_node_info[0]}" "${_node_info[4]}"
+      printf " backend :   code: \e[0;34m%s\e[m, info: \e[0;34m%s\e[m" "${_node_info[2]}"  "${_status_info}"
 
       _counter=$((_counter + 1))
 
