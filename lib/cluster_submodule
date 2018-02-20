@@ -41,22 +41,22 @@ function show_cluster() {
 
       _node_info=($(pcp_node_info -h "$_wbs" -p "$_port_number" -U "$_username" -n "$_counter" -w))
 
-      if [[ "${_node_info[4}" -eq 0 ]] ; then
+      if [[ "${_node_info[4]}" -eq 0 ]] ; then
 
         _status_info="Initialization"
         _trgb="0;32m"
 
-      elif [[ "${_node_info[4}" -eq 1 ]] ; then
+      elif [[ "${_node_info[4]}" -eq 1 ]] ; then
 
         _status_info="Node is up. No connections yet"
         _trgb="0;34m"
 
-      elif [[ "${_node_info[4}" -eq 1 ]] ; then
+      elif [[ "${_node_info[4]}" -eq 1 ]] ; then
 
         _status_info="Node is up. Connections are pooled."
         _trgb="0;32m"
 
-      elif [[ "${_node_info[4}" -eq 1 ]] ; then
+      elif [[ "${_node_info[4]}" -eq 1 ]] ; then
 
         _status_info="Node is down."
         _trgb="0;31m"
