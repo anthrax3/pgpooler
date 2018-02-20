@@ -66,36 +66,43 @@ function show_cluster() {
       # shellcheck disable=SC2034,SC2154
       for _dbs in "${_db_stack[@]}" ; do
 
-        _node_info=($(pcp_node_info -h "$_wbs" -p "$_port_number" -U "$_username" -n "$_counter" -w 2>/dev/null))
-        _cstate="$?"
+        check_conn "$_dbs" 5432
+        _db_status="$?"
 
-        if [[ "$_cstate" -eq 0 ]] ; then
+        if [[ "$_db_status" -eq 0 ]] ; then
 
-          if [[ "${_node_info[2]}" -eq 0 ]] ; then
+          _node_info=($(pcp_node_info -h "$_wbs" -p "$_port_number" -U "$_username" -n "$_counter" -w 2>/dev/null))
+          _cstate="$?"
 
-            _node_status="INIT"
-            _trgb="0;38m"
+          if [[ "$_cstate" -eq 0 ]] ; then
 
-          elif [[ "${_node_info[2]}" -eq 1 ]] ; then
+            if [[ "${_node_info[2]}" -eq 0 ]] ; then
 
-            _node_status="UP"
-            _trgb="0;34m"
+              _node_status="INIT"
+              _trgb="0;38m"
 
-          elif [[ "${_node_info[2]}" -eq 2 ]] ; then
+            elif [[ "${_node_info[2]}" -eq 1 ]] ; then
 
-            _node_status="UP"
-            _trgb="0;32m"
+              _node_status="UP"
+              _trgb="0;34m"
 
-          elif [[ "${_node_info[2]}" -eq 3 ]] ; then
+            elif [[ "${_node_info[2]}" -eq 2 ]] ; then
 
-            _node_status="DOWN"
-            _trgb="0;31m"
+              _node_status="UP"
+              _trgb="0;32m"
+
+            elif [[ "${_node_info[2]}" -eq 3 ]] ; then
+
+              _node_status="DOWN"
+              _trgb="0;31m"
+
+            fi
+
+            # shellcheck disable=SC2183,SC2046,SC2086
+            printf "  %s" "${_node_info[0]}"
+            printf " (code: \e[0;34m%s\e[m, status: \e[${_trgb}%s\e[m)\n" "${_node_info[2]}" "${_node_status}"
 
           fi
-
-          # shellcheck disable=SC2183,SC2046,SC2086
-          printf "  %s" "${_node_info[0]}"
-          printf " (code: \e[0;34m%s\e[m, status: \e[${_trgb}%s\e[m)\n" "${_node_info[2]}" "${_node_status}"
 
         fi
 
