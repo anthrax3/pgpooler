@@ -98,7 +98,7 @@ function init_cli() {
         help_cli
         cstate="0" ;;
 
-      set|show|attach|detach)
+      set|show|attach|detach|connect)
 
         module_distributor "${input_array[@]}"
         cstate="0" ;;
