@@ -20,13 +20,24 @@ function connect_module() {
   local _STATE=0
 
   # shellcheck disable=SC2154
-  if [[ "${input_array[3]}" ]] ; then
+  if [[ "${input_array[1]}" ]] ; then
 
     for i in "${_web_stack[@]}" ; do
 
-      if [[ "$i" == "${input_array[3]}" ]] ; then
+      if [[ "$i" == "${input_array[1]}" ]] ; then
 
-        pcp_attach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
+        check_conn "$i" 5432
+        _conn_status="$?"
+
+        if [[ "$_conn_status" -eq 0 ]] ; then
+
+          echo "connect"
+
+        else
+
+          printf "%s\n" "error connection to $i"
+
+        fi
 
       fi
 
