@@ -67,27 +67,29 @@ pgpooler > help
 
   CLI Modules:
     show <submodule> <key>            show submodule key info
-    set <submodule> <key> <param>     set submodule key value
+    set  <submodule> <key> <param>    set submodule key value
 
   Submodules option:
     show
-      config <file|user|port|web|db>
+      config  <file|user|port|web|db>
       cluster <status|databases>
 
     set
-      config <file|user|port|web[add,del]|db[add,del]>
-      cluster <attach[host][db]|detach[host][db]>
+      config  <file|user|port|web[add,del]|db[add,del]>
+      cluster <attach{all|[host][db]}|{all|detach[host][db]}>
 
     Examples:
       show config                     displays the entire configuration
       show config user                show username key
       show cluster status             show cluster status
       set config user admin           set username key to 'admin'
-      set web add web1-node           added web1-node host to web key
-      set db del db1-node             deleted db1-node host from db key
+      set cluster web add web1-node   added web1-node host to web key
+      set cluster db del db1-node     deleted db1-node host from db key
       set cluster attach web1-node 0  attach web1-node to the db
                                       marked with 0 id
       set cluster detach web1-node 1  detach web1-node from the db
+                                      marked with 1 id
+      set cluster attach all 1        attach all nodes to the db
                                       marked with 1 id
 ```
 
@@ -142,9 +144,16 @@ Show specific node cluster status:
 ```bash
 pgpooler > show cluster status node-web7
 
-    host : node-web7
- backend : node-db1 5432 2 0.500000 up
- backend : node-db2 5432 2 0.500000 up
+  Status codes:
+    0 - This state is only used during the initialization.
+        PCP will never display it.
+    1 - Node is up. No connections yet.
+    2 - Node is up. Connections are pooled.
+    3 - Node is down.
+
+ node-web7
+  node-db1 (code: 2, status: UP)
+  node-db2 (code: 2, status: UP)
 ```
 
 Show database status:
@@ -152,8 +161,8 @@ Show database status:
 ```bash
 pgpooler > show cluster databases
 ID	 DATABASE
- 0	  node-db1 (up)
- 1	  node-db2 (up)
+ 0	  node-db1 (port: 5432, status: OK)
+ 1	  node-db2 (port: 5432, status: OK)
 ```
 
 ### set
@@ -193,32 +202,59 @@ pgpooler > show config web
 }
 ```
 
-Detach web node from pgpool cluster:
+Detach web node from database:
 
 ```bash
 pgpooler > set cluster detach node-web7 1
 pcp_detach_node -- Command Successful
 pgpooler > show cluster status
 
+  Status codes:
+    0 - This state is only used during the initialization.
+        PCP will never display it.
+    1 - Node is up. No connections yet.
+    2 - Node is up. Connections are pooled.
+    3 - Node is down.
+
 [...]
 
-    host : node-web7
- backend : node-db1 5432 2 0.500000 up
- backend : node-db2 5432 3 0.500000 down
+ node-web7
+  node-db1 (code: 2, status: UP)
+  node-db2 (code: 3, status: DOWN)
 ```
 
-Attach web node to pgpool cluster:
+Attach web node to database:
 
 ```bash
-pgpooler > set cluster attach ticketingweb7 1
+pgpooler > set cluster attach node-web7 1
 pcp_attach_node -- Command Successful
 pgpooler > show cluster status
 
+  Status codes:
+    0 - This state is only used during the initialization.
+        PCP will never display it.
+    1 - Node is up. No connections yet.
+    2 - Node is up. Connections are pooled.
+    3 - Node is down.
+
 [...]
 
-    host : node-web7
- backend : node-db1 5432 2 0.500000 up
- backend : node-db2 5432 2 0.500000 up
+ node-web7
+  node-db1 (code: 2, status: UP)
+  node-db2 (code: 2, status: UP)
+```
+
+Attach all web nodes to database:
+
+```bash
+pgpooler > set cluster attach all 1
+pcp_attach_node -- Command Successful
+pcp_attach_node -- Command Successful
+pcp_attach_node -- Command Successful
+pcp_attach_node -- Command Successful
+pcp_attach_node -- Command Successful
+pcp_attach_node -- Command Successful
+pcp_attach_node -- Command Successful
 ```
 
 ## Requirements
