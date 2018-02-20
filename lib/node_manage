@@ -26,11 +26,11 @@ function attach_node() {
 
       if [[ "$i" == "${input_array[3]}" ]] ; then
 
-        pcp_attach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
+        pcp_attach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
       elif [[ "$i" == "all" ]] ; then
 
-        pcp_attach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${i}" -w
+        pcp_attach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
       fi
 
@@ -72,11 +72,11 @@ function detach_node() {
 
       if [[ "$i" == "${input_array[3]}" ]] ; then
 
-        pcp_detach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
+        pcp_detach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
       elif [[ "$i" == "all" ]] ; then
 
-        pcp_detach_node -h "$_wbs" -p "$_port_number" -U "$_username" -n "${i}" -w
+        pcp_detach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
       fi
 
