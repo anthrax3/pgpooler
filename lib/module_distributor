@@ -28,6 +28,10 @@ function module_distributor() {
 
     show_module
 
+  elif [[ ${input_array[0]} == "connect" ]] ; then
+
+    connect_module
+
   fi
 
   return $_STATE
