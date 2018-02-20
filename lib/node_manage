@@ -28,7 +28,7 @@ function attach_node() {
 
         pcp_attach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
-      elif [[ "$i" == "all" ]] ; then
+      elif [[ "${input_array[3]}" == "all" ]] ; then
 
         pcp_attach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
@@ -74,7 +74,7 @@ function detach_node() {
 
         pcp_detach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
-      elif [[ "$i" == "all" ]] ; then
+      elif [[ "${input_array[3]}" == "all" ]] ; then
 
         pcp_detach_node -h "$i" -p "$_port_number" -U "$_username" -n "${input_array[4]}" -w
 
