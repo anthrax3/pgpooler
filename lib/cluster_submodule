@@ -51,6 +51,7 @@ function show_cluster() {
 
     else
 
+      # shellcheck disable=SC2034
       _web_state="ERR"
       _trgb="0;31"
 
