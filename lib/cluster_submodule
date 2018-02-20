@@ -32,44 +32,72 @@ function show_cluster() {
 
   for _wbs in "${_web_current_stack[@]}" ; do
 
+    check_conn "$_wbs" 22
+    _web_status="$?"
+
+    if [[ "$_web_status" -eq 0 ]] ; then
+
+      _web_state="OK"
+      _trgb="0;32"
+
+    else
+
+      _web_state="ERR"
+      _trgb="0;31"
+
+    fi
+
     local _counter=0
 
-    printf "\n    \e[0;30m%s\e[m : \e[1;39m%s\e[m\n" "node" "$_wbs"
+    if [[ "$_web_status" -eq 0 ]] ; then
 
-    # shellcheck disable=SC2034,SC2154
-    for _dbs in "${_db_stack[@]}" ; do
+      printf "\n \e[1;39m%s\e[m\n" "$_wbs"
 
-      _node_info=($(pcp_node_info -h "$_wbs" -p "$_port_number" -U "$_username" -n "$_counter" -w))
+      # shellcheck disable=SC2034,SC2154
+      for _dbs in "${_db_stack[@]}" ; do
 
-      if [[ "${_node_info[4]}" -eq 0 ]] ; then
+        _node_info=($(pcp_node_info -h "$_wbs" -p "$_port_number" -U "$_username" -n "$_counter" -w 2>/dev/null))
+        _cstate="$?"
 
-        _status_info="Initialization"
-        _trgb="0;32m"
+        if [[ "$_cstate" -eq 0 ]] ; then
 
-      elif [[ "${_node_info[4]}" -eq 1 ]] ; then
+          if [[ "${_node_info[2]}" -eq 0 ]] ; then
 
-        _status_info="Node is up. No connections yet"
-        _trgb="0;34m"
+            _node_status="INIT"
+            _trgb="0;38m"
 
-      elif [[ "${_node_info[4]}" -eq 1 ]] ; then
+          elif [[ "${_node_info[2]}" -eq 1 ]] ; then
 
-        _status_info="Node is up. Connections are pooled."
-        _trgb="0;32m"
+            _node_status="UP"
+            _trgb="0;34m"
 
-      elif [[ "${_node_info[4]}" -eq 1 ]] ; then
+          elif [[ "${_node_info[2]}" -eq 2 ]] ; then
 
-        _status_info="Node is down."
-        _trgb="0;31m"
+            _node_status="UP"
+            _trgb="0;32m"
 
-      fi
+          elif [[ "${_node_info[2]}" -eq 3 ]] ; then
 
-      # shellcheck disable=SC2183,SC2046,SC2086
-      printf " \e[0;30mbackend\e[m : %s (\e[${_trgb}%s\e[m)\n" "${_node_info[0]}" "${_node_info[4]}"
-      printf " backend :   code: \e[0;34m%s\e[m, info: \e[0;34m%s\e[m" "${_node_info[2]}"  "${_status_info}"
+            _node_status="DOWN"
+            _trgb="0;31m"
 
-      _counter=$((_counter + 1))
+          fi
 
-    done
+          # shellcheck disable=SC2183,SC2046,SC2086
+          printf "  %s" "${_node_info[0]}"
+          printf " (code: \e[0;34m%s\e[m, status: \e[${_trgb}%s\e[m)\n" "${_node_info[2]}" "${_node_status}"
+
+        fi
+
+        _counter=$((_counter + 1))
+
+      done
+
+    else
+
+      printf "\n \e[1;39m%s\e[m - connection error\n" "$_wbs"
+
+    fi
 
   done
 
@@ -114,17 +142,18 @@ function show_databases() {
 
     if [[ "$_db_status" -eq 0 ]] ; then
 
-      _db_state="up"
+      _db_state="OK"
       _trgb="0;32"
 
     else
 
-      _db_state="down"
+      _db_state="ERR"
       _trgb="0;31"
 
     fi
 
-    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m (\e[${_trgb}m%s\e[m)\n" "$_id" "$_db_name" "$_db_state"
+    printf " \e[1;34m%s\e[m\t  \e[1;39m%s\e[m" "$_id" "$_db_name"
+    printf " (port: %s, status: \e[${_trgb}m%s\e[m)\n" "5432" "$_db_state"
 
   done
 
