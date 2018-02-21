@@ -34,10 +34,6 @@ Provides the following options:
     -c, --config <file>             attach an external config file to the script
 ``````
 
-## Screenshot
-
-![pgpooler_output](doc/img/output_01.png)
-
 ## Configuration file
 
 The **etc/template.cfg** configuration file (appended with the `-c|--config` parameter) has the following structure:
